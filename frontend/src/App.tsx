@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 function App() {
   const [count, setCount] = useState(0)
