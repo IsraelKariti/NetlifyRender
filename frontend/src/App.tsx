@@ -1,13 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  
+  useEffect(() => {
+    fetch(backendUrl)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+  
   return (
     <>
+    <p>{backendUrl}</p>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
