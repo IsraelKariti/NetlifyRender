@@ -6,17 +6,17 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 function App() {
   const [count, setCount] = useState(0)
-  
+  const [msg, setMsg] = useState('');
+
   useEffect(() => {
     fetch(backendUrl)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => setMsg(data.msg))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
   
   return (
     <>
-    <p>{backendUrl}</p>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -26,6 +26,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React = love</h1>
+      <p>{msg}</p>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
